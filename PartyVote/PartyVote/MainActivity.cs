@@ -18,21 +18,12 @@ namespace PartyVote
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button castVoteButton = FindViewById<Button>(Resource.Id.CastVoteButton);
-            RadioGroup Candidates = FindViewById<RadioGroup>(Resource.Id.radioGroup1);
+            Button newElectionButton = FindViewById<Button>(Resource.Id.NewElectionButton);
 
-            castVoteButton.Click += (object sender, EventArgs e) =>
+            newElectionButton.Click += delegate
             {
-                // Cast Vote from Radio Button selection
-                int SelectedCandidate = Candidates.CheckedRadioButtonId;
-                string candidateName = FindViewById<RadioButton>(SelectedCandidate).Text;
-
-                var resultsDialog = new AlertDialog.Builder(this);
-                resultsDialog.SetMessage("Winner: " + candidateName);
-
-                resultsDialog.Show();
+                var electionSetupActivity = new Intent(this, typeof(ElectionSetup));
+                StartActivity(electionSetupActivity);
             };
         }
     }

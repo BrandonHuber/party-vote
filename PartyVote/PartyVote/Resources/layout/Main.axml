@@ -3,32 +3,10 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <RadioGroup
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioGroup1">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Option1"
-            android:id="@+id/Option1" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option2"
-            android:id="@+id/Option2" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Option3"
-            android:id="@+id/Option3" />
-    </RadioGroup>
     <Button
-        android:text="Cast Vote"
+        android:text="New Election"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/CastVoteButton" />
+        android:id="@+id/NewElectionButton"
+        android:clickable="true" />
 </LinearLayout>
