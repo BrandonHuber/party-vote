@@ -46,7 +46,6 @@ namespace PartyVote
             addCandidateButton.Click += delegate
             {
                 // TODO: Check if empty before adding
-                Toast.MakeText(this, candidateTextBox.Text, ToastLength.Long).Show();
                 if(candidateTextBox.Text != "")
                 {
                     adapter.Insert(candidateTextBox.Text, 0);
