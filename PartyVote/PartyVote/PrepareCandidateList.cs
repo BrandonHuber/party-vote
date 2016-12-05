@@ -33,7 +33,8 @@ namespace PartyVote
             addCandidateButton.Click += delegate
             {
                 // TODO: Check if empty before adding
-                adapter.Add(candidateTextBox.Text);
+                adapter.Insert(candidateTextBox.Text, 0);
+                candidateTextBox.Text = "";
             };
 
             beginElectionButton.Click += delegate
