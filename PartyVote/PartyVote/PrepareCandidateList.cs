@@ -30,11 +30,28 @@ namespace PartyVote
             Button beginElectionButton = FindViewById<Button>(Resource.Id.BeginElectionButton);
             EditText candidateTextBox = FindViewById<EditText>(Resource.Id.CandidateTextBox);
 
+            candidateTextBox.KeyPress += (sender, e) =>
+            {
+                if(e.KeyCode == Keycode.Enter)
+                {
+                    addCandidateButton.PerformClick();
+                    candidateTextBox.RequestFocus();
+                }
+                else
+                {
+                    e.Handled = false;
+                }
+            };
+
             addCandidateButton.Click += delegate
             {
                 // TODO: Check if empty before adding
-                adapter.Insert(candidateTextBox.Text, 0);
-                candidateTextBox.Text = "";
+                Toast.MakeText(this, candidateTextBox.Text, ToastLength.Long).Show();
+                if(candidateTextBox.Text != "")
+                {
+                    adapter.Insert(candidateTextBox.Text, 0);
+                    candidateTextBox.Text = "";
+                }
             };
 
             beginElectionButton.Click += delegate

@@ -14,7 +14,8 @@
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/AddCandidateButton"
             android:layout_weight="1"
-            android:hint="Candidate Name" />
+            android:hint="Candidate Name"
+            android:singleLine="true" />
         <Button
             android:id="@+id/AddCandidateButton"
             android:layout_width="wrap_content"

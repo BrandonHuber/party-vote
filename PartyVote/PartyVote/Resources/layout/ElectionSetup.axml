@@ -12,7 +12,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ElectionTitleTextBox" />
+        android:id="@+id/ElectionTitleTextBox"
+        android:singleLine="true" />
     <TextView
         android:text="Voting Method"
         android:textAppearance="?android:attr/textAppearanceMedium"
