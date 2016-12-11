@@ -21,10 +21,10 @@ namespace PartyVote
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ElectionLanding);
 
-            this.Title = this.Intent.Extras.GetString("electionTitle");
+            this.Title = "Election: " + this.Intent.Extras.GetString("electionTitle");
 
             Button newBallotButton = FindViewById<Button>(Resource.Id.NewBallotButton);
-            giveResultsButton = FindViewById<Button>(Resource.Id.GiveResultsButton);     
+            finishElectionButton = FindViewById<Button>(Resource.Id.FinishElectionButton);     
 
             UpdateActivity();
 
@@ -42,7 +42,7 @@ namespace PartyVote
                 dialog.Show();
             };
 
-            giveResultsButton.Click += delegate
+            finishElectionButton.Click += delegate
             {
                 AlertDialog.Builder alert = new AlertDialog.Builder(this);
                 alert.SetTitle("Show the election results?");
@@ -69,21 +69,21 @@ namespace PartyVote
             switch (ballotsCount)
             {
                 case 0:
-                    giveResultsButton.Enabled = false;
+                    finishElectionButton.Enabled = false;
                     descriptionTextView.Text = "No ballots have been cast yet.";
                     break;
                 case 1:
-                    giveResultsButton.Enabled = true;
+                    finishElectionButton.Enabled = true;
                     descriptionTextView.Text = "1 ballot has been cast so far. Anyone else voting?";
                     break;
                 default:
-                    giveResultsButton.Enabled = true;
+                    finishElectionButton.Enabled = true;
                     descriptionTextView.Text = Convert.ToString(ballotsCount) + " ballots have been cast so far. Anyone else voting?";
                     break;
             }
         }
 
         private int ballotsCount = 0;
-        private Button giveResultsButton;
+        private Button finishElectionButton;
     }
 }

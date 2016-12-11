@@ -95,7 +95,7 @@ namespace PartyVote
 			public const int ElectionTitleTextBox = 2131099652;
 			
 			// aapt resource value: 0x7f060002
-			public const int GiveResultsButton = 2131099650;
+			public const int FinishElectionButton = 2131099650;
 			
 			// aapt resource value: 0x7f060001
 			public const int NewBallotButton = 2131099649;
