@@ -34,12 +34,7 @@ namespace PartyVote
                 ballotsCount++;
                 UpdateActivity();
 
-                AlertDialog.Builder alert = new AlertDialog.Builder(this);
-                alert.SetTitle("You Voted");
-                alert.SetMessage("Doesn't it feel good?");
-
-                Dialog dialog = alert.Create();
-                dialog.Show();
+                Toast.MakeText(this, "Ballot successfully cast", ToastLength.Short).Show();
             };
 
             finishElectionButton.Click += delegate
