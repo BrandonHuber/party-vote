@@ -24,10 +24,10 @@ namespace PartyVote
             this.Title = this.Intent.Extras.GetString("electionTitle");
 
             Button newBallotButton = FindViewById<Button>(Resource.Id.NewBallotButton);
-            giveResultsButton = FindViewById<Button>(Resource.Id.GiveResultsButton);
-            
+            giveResultsButton = FindViewById<Button>(Resource.Id.GiveResultsButton);     
+
             UpdateActivity();
-            
+
             newBallotButton.Click += delegate
             {
                 // TODO: Create actual ballot
@@ -44,15 +44,22 @@ namespace PartyVote
 
             giveResultsButton.Click += delegate
             {
-                // TODO: Create actual results activity
                 AlertDialog.Builder alert = new AlertDialog.Builder(this);
-                alert.SetTitle("Election Finished");
-                alert.SetMessage("The results are on the next (nonexistent) page. Now we'll never know who won.");
+                alert.SetTitle("Show the election results?");
+                alert.SetMessage("This will end the election and show the results. You will no longer be able to cast ballots for this election.");
+                
+                alert.SetPositiveButton("Ok", (senderAlert, args) =>
+                {
+                    // TODO: Create actual results activity
+                    var mainActivity = new Intent(this, typeof(MainActivity));
+                    StartActivity(mainActivity);
+                });
+
+                alert.SetNegativeButton("Cancel", (senderAlert, args) => {});
 
                 Dialog dialog = alert.Create();
                 dialog.Show();
             };
-            
         }
 
         private void UpdateActivity()
