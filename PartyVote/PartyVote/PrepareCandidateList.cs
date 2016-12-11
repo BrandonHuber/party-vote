@@ -13,7 +13,7 @@ using System.Collections.ObjectModel;
 
 namespace PartyVote
 {
-    [Activity(Label = "PrepareCandidateList")]
+    [Activity(Label = "Add Candidates")]
     public class PrepareCandidateList : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

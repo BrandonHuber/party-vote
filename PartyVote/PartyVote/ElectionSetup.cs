@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace PartyVote
 {
-    [Activity(Label = "ElectionSetup")]
+    [Activity(Label = "New Election")]
     public class ElectionSetup : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
