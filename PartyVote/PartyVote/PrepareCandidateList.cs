@@ -58,12 +58,11 @@ namespace PartyVote
                 Bundle b = new Bundle();
                 b.PutString("electionTitle", this.Intent.Extras.GetString("electionTitle"));
                 b.PutString("votingMethod", this.Intent.Extras.GetString("votingMethod"));
-                b.PutStringArray("ballotCandidates", adapter.ToArray<string>());
-
-                // TODO: Go to next activity
-                //var prepareCandidatesActivity = new Intent(this, typeof(PrepareCandidateList));
-                //prepareCandidatesActivity.PutExtras(b);
-                //StartActivity(prepareCandidatesActivity);
+                //b.PutStringArray("ballotCandidates", adapter.ToArray<string>());  // TODO: This crashes
+                
+                var electionLandingActivity = new Intent(this, typeof(ElectionLanding));
+                electionLandingActivity.PutExtras(b);
+                StartActivity(electionLandingActivity);
             };
             
         }
