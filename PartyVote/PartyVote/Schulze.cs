@@ -14,33 +14,27 @@ namespace PartyVote
 {
     class Schulze
     {
-        private Dictionary<string, int> mCandidateIds = null;
+        private List<string> mCandidates = null;
         private int[,] mPairwisePreferences = null;
         private int[,] mStrongestPaths = null;
 
         public Schulze(List<string> candidates)
         {
-            mCandidateIds = new Dictionary<string, int>();
             mPairwisePreferences = new int[candidates.Count, candidates.Count];
-            
-            for (int i = 0; i < candidates.Count; i++)
-            {
-                mCandidateIds[candidates[i]] = i;
-            }
+            candidates.Sort();
+            mCandidates = candidates;
         }
 
         public void AddBallot(Dictionary<string, int> ballot)
         {
-            List<string> candidates = ballot.Keys.ToList();
-
-            foreach (string candidateX in candidates)
+            foreach (string candidateX in mCandidates)
             {
-                foreach (string candidateY in candidates)
+                foreach (string candidateY in mCandidates)
                 {
                     // Less Than means more preferred (1 is most preferred)
                     if (ballot[candidateX] < ballot[candidateY])
                     {
-                        mPairwisePreferences[mCandidateIds[candidateX], mCandidateIds[candidateY]]++;
+                        mPairwisePreferences[mCandidates.IndexOf(candidateX), mCandidates.IndexOf(candidateY)]++;
                     }
                 }
             }
@@ -50,11 +44,11 @@ namespace PartyVote
         {
             get
             {
-                mStrongestPaths = new int[mCandidateIds.Count, mCandidateIds.Count];
+                mStrongestPaths = new int[mCandidates.Count, mCandidates.Count];
 
-                for (int i = 0; i < mCandidateIds.Count; i++)
+                for (int i = 0; i < mCandidates.Count; i++)
                 {
-                    for (int j = 0; j < mCandidateIds.Count; j++)
+                    for (int j = 0; j < mCandidates.Count; j++)
                     {
                         if (i != j)
                         {
@@ -70,13 +64,13 @@ namespace PartyVote
                     }
                 }
 
-                for (int i = 0; i < mCandidateIds.Count; i++)
+                for (int i = 0; i < mCandidates.Count; i++)
                 {
-                    for (int j = 0; j < mCandidateIds.Count; j++)
+                    for (int j = 0; j < mCandidates.Count; j++)
                     {
                         if (i != j)
                         {
-                            for (int k = 0; k < mCandidateIds.Count; k++)
+                            for (int k = 0; k < mCandidates.Count; k++)
                             {
                                 if ((i != k) && (j != k))
                                 {
@@ -88,8 +82,8 @@ namespace PartyVote
                 }
 
                 // TODO: Find more concise way to sort the candidates
-                var ranking = mCandidateIds.Keys.ToList();
-                ranking.Sort((x, y) => mStrongestPaths[mCandidateIds[x], mCandidateIds[y]].CompareTo(mStrongestPaths[mCandidateIds[y], mCandidateIds[x]]));
+                var ranking = mCandidates.ToList<string>();
+                ranking.Sort((x, y) => mStrongestPaths[mCandidates.IndexOf(x), mCandidates.IndexOf(y)].CompareTo(mStrongestPaths[mCandidates.IndexOf(y), mCandidates.IndexOf(x)]));
                 ranking.Reverse();
                 return ranking;
             }
