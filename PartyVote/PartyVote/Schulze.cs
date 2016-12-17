@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace PartyVote
 {
-    class Schulze
+    public class Schulze
     {
         private List<string> mCandidates = null;
         private int[,] mPairwisePreferences = null;
