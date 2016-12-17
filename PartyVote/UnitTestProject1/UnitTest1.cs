@@ -124,9 +124,21 @@ namespace UnitTestProject1
                 schulze.AddBallot(tempBallot);
             }
 
-            var ranking = schulze.Ranking;
-            
-            Assert.AreEqual(new List<string> { "E", "A", "C", "B", "D" }, ranking.ToArray());
+            List<RankedCandidate> ranking = schulze.Ranking;
+            var expectedRanking = new List<RankedCandidate>
+            {
+                new RankedCandidate("E", 0),
+                new RankedCandidate("A", 0),
+                new RankedCandidate("C", 0),
+                new RankedCandidate("B", 0),
+                new RankedCandidate("D", 0),
+            };
+
+            for (int i = 0; i < ranking.Count; i++)
+            {
+                Assert.AreEqual(expectedRanking[i].Name, ranking[i].Name);
+                Assert.AreEqual(expectedRanking[i].Strength, ranking[i].Strength);
+            }
         }
     }
 }

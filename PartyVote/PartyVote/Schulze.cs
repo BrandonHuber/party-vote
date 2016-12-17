@@ -40,7 +40,7 @@ namespace PartyVote
             }
         }
 
-        public List<string> Ranking
+        public List<RankedCandidate> Ranking
         {
             get
             {
@@ -82,8 +82,13 @@ namespace PartyVote
                 }
 
                 // TODO: Find more concise way to sort the candidates
-                var ranking = mCandidates.ToList<string>();
-                ranking.Sort((x, y) => mStrongestPaths[mCandidates.IndexOf(x), mCandidates.IndexOf(y)].CompareTo(mStrongestPaths[mCandidates.IndexOf(y), mCandidates.IndexOf(x)]));
+                var ranking = new List<RankedCandidate>();
+
+                foreach (string candidate in mCandidates)
+                {
+                    ranking.Add(new RankedCandidate(name: candidate));
+                }
+                ranking.Sort((x, y) => mStrongestPaths[mCandidates.IndexOf(x.Name), mCandidates.IndexOf(y.Name)].CompareTo(mStrongestPaths[mCandidates.IndexOf(y.Name), mCandidates.IndexOf(x.Name)]));
                 ranking.Reverse();
                 return ranking;
             }

@@ -66,6 +66,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="ElectionLanding.cs" />
     <Compile Include="PrepareCandidateList.cs" />
+    <Compile Include="RankedCandidate.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schulze.cs" />
