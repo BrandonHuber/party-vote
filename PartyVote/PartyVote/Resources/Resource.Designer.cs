@@ -106,6 +106,9 @@ namespace PartyVote
 			// aapt resource value: 0x7f060007
 			public const int PrepareBallotButton = 2131099655;
 			
+			// aapt resource value: 0x7f06000e
+			public const int ResultsDescription = 2131099662;
+			
 			// aapt resource value: 0x7f060006
 			public const int VotingMethodSpinner = 2131099654;
 			
@@ -142,6 +145,9 @@ namespace PartyVote
 			
 			// aapt resource value: 0x7f030003
 			public const int PrepareCandidateList = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Results = 2130903044;
 			
 			static Layout()
 			{

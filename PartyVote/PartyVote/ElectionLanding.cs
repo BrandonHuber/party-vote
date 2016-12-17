@@ -45,9 +45,11 @@ namespace PartyVote
                 
                 alert.SetPositiveButton("Ok", (senderAlert, args) =>
                 {
-                    // TODO: Create actual results activity
-                    var mainActivity = new Intent(this, typeof(MainActivity));
-                    StartActivity(mainActivity);
+                    var bundle = new Bundle();
+                    bundle.PutString("electionTitle", this.Intent.Extras.GetString("electionTitle"));
+                    var resultsActivity = new Intent(this, typeof(ResultsActivity));
+                    resultsActivity.PutExtras(bundle);
+                    StartActivity(resultsActivity);
                 });
 
                 alert.SetNegativeButton("Cancel", (senderAlert, args) => {});
