@@ -18,5 +18,5 @@
         android:text="Give me the election results"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/GiveResultsButton" />
+        android:id="@+id/FinishElectionButton" />
 </LinearLayout>
